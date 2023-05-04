@@ -1,0 +1,9 @@
+.centre-bg-main {
+    min-width: 100vw;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: -10;
+    max-height: 100vh;
+    overflow: hidden;
+}

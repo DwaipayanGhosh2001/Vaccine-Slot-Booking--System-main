@@ -1,0 +1,43 @@
+.sidebar-box {
+    z-index: 40;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);
+    height: fit-content;
+    width: 100%;
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    gap: 1rem;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transform: translate(0);
+}
+
+@media (min-width: 1280px) {
+    .box {
+        width: 20%;
+    }
+}
+@media (min-width: 768px) {
+    .box {
+        width: 40%;
+    }
+}
+
+.boxOpen {
+    transform: translate(0);
+}
+.boxClose {
+    transform: translate(100%);
+}

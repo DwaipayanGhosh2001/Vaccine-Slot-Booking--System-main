@@ -1,0 +1,130 @@
+
+/* Navbar */
+body{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.color{
+    background-color: rgb(16,163,177);
+}
+.text-color{
+  background: -webkit-linear-gradient(#2e302f, #22d4ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.zoom {
+    transition: transform .5s;
+  }
+  
+  .zoom:hover { 
+    transform: scale(1.15); 
+  }
+
+/* modal */
+.btn-close{
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 15px;
+    position: absolute;
+    right: 20px;
+}
+.form-control{
+  box-shadow: none !important;
+  outline: none !important;
+}
+.form-select{
+  box-shadow: none !important;
+  outline: none !important;
+}
+.active{
+  background: #56CCF2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.activeText{
+  background: -webkit-linear-gradient(#2e2f2e, #34d422);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+
+}
+
+/* Swiper css */
+.container-xxl{
+  max-width: 1560px !important;
+}
+.fade-in {
+  transition: opacity 1s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+img{
+  filter: brightness(60%);
+}
+.logo{
+  filter: none;
+}
+
+/* Scrollbar modification */
+
+/* Change scrollbar width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Change scrollbar track color */
+::-webkit-scrollbar-track {
+  background: #f5f9f9;
+}
+
+/* Change scrollbar handle color */
+::-webkit-scrollbar-thumb {
+  background: #30dcef;
+}
+
+/* Change scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3939;
+}
+
+.btn-color{
+  background: #06beb6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #48b1bf, #06beb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+border: none;  
+
+}
+
+.bg-paid{
+ background-color: rgb(218, 104, 104);
+}
+.bg-free{
+  background-color: #2fe8e1;
+}
+.bg-image{
+  background-image: url("https://wallpaperaccess.com/full/2309430.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
+}
+@media screen and (max-width: 768px) {
+  .w-50{
+    width: 100% !important;
+  }
+  body{
+    font-size: 12px;
+  }
+  .zoom:hover{
+    transform: none;
+  }
+}

@@ -1,0 +1,66 @@
+/* center sign in  css */
+.centre-signup-main {
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.centre-signup-main h1 {
+    color: transparent;
+    font-size: 2rem;
+    line-height: 2rem;
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+    background-clip: text;
+    font-weight: 700;
+    padding: 10px 0px;
+}
+
+.register-centre-form {
+    margin: 1rem 0;
+    background-color: #f5f5f580;
+    padding: 1.5rem;
+}
+
+.centre-state-dis {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: .5rem;
+}
+
+.centre-others-ip {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem
+}
+.centre-reg-col-span-2 {
+    grid-column: span 1 / span 1;
+}
+
+@media (min-width: 640px) {
+    .centre-others-ip {
+        margin-top: 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    
+    }
+    .centre-reg-col-span-2 {
+        grid-column: span 2 / span 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .centre-state-dis {
+        flex-direction: row;
+        gap: 2.5rem
+    }
+    .centre-others-ip {
+        margin-top: 2.5rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+    .centre-reg-col-span-2 {
+        grid-column: span 3 / span 3;
+    }
+}
