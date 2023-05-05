@@ -8,7 +8,9 @@ const Bookslot = () => {
   const toggle = (id) => setActive(id);
   return (
     <Container fluid className=" pb-2 ">
-      <h1 className="text-center text-color pt-5">
+      <h1 className="text-center text-color pt-5 animate__animated 	animate__bounce animate__slow	3s "
+
+      >
         Search for your nearest Vaccination Center
       </h1>
       <p className="text-center text-dark mt-4">

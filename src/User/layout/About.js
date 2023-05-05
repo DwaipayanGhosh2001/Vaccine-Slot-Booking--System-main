@@ -6,7 +6,7 @@ import { Container, Button } from "reactstrap";
 const About = () => {
 
   return (
-    <Container fluid className="text-center ">
+    <Container fluid className="text-center animate__fadeInLeft animate__animated ">
       <h1 className=" my-5">About</h1>
       <h3 className=" mt-5 text-3xl font-medium">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam numquam

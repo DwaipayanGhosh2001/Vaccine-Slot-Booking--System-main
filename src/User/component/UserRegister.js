@@ -1,36 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useUserAuth } from "../context/Context";
 
 import { Label, Input, Form, Button, Card, CardBody } from "reactstrap";
 import { hover } from "@testing-library/user-event/dist/hover";
 const UserRegister = () => {
   const { register } = useUserAuth();
-  const [userdata, setUserData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    password: "",
-  });
 
+const nameRef= useRef(null);
+const emailRef= useRef(null);
+const phoneRef= useRef(null);
+const addressRef= useRef(null);
+const passRef= useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!userdata.phone || !userdata.email || !userdata.password) {
+    const name= nameRef.current.value;
+    const email= emailRef.current.value;
+    const phone= phoneRef.current.value;
+    const address= addressRef.current.value;
+    const password= passRef.current.value;
+    if (!phone || !email || !password) {
       return alert("Form not complete");
     }
-    const { name, email, phone, address, password } = userdata;
     register(name, email, phone, address, password);
-  };
-
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevState) => ({
-      // loads the preState items.
-      ...prevState,
-      // the name is taken into an array and the value is assigned.
-      [name]: value,
-    }));
   };
   return (
     <div>
@@ -41,26 +33,22 @@ const UserRegister = () => {
             <Input
               type="text"
               name="name"
-              defaultValue="John"
               placeholder="Enter your name"
-              value={userdata.name}
-              onChange={handleInput}
+              innerRef={nameRef}
             />
             <Label className="mt-2">Email</Label>
             <Input
               type="email"
               name="email"
               placeholder="Enter your email"
-              value={userdata.email}
-              onChange={handleInput}
+              innerRef={emailRef}
             />
             <Label className="mt-2">Mobile Number</Label>
             <Input
               type="number"
               name="phone"
               placeholder="Enter your mobile number"
-              value={userdata.phone}
-              onChange={handleInput}
+              innerRef={phoneRef}
             />
 
             <Label className="mt-2">Address</Label>
@@ -68,8 +56,7 @@ const UserRegister = () => {
               type="text-area"
               name="address"
               placeholder="Enter your address"
-              value={userdata.address}
-              onChange={handleInput}
+              innerRef={addressRef}
             />
 
             <Label className="mt-2">Password</Label>
@@ -77,8 +64,7 @@ const UserRegister = () => {
               type="password"
               name="password"
               placeholder="Enter password"
-              value={userdata.password}
-              onChange={handleInput}
+              innerRef={passRef}
             />
             <div className="w-100 d-flex justify-content-center">
               <Button
