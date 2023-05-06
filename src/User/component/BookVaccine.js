@@ -1,15 +1,28 @@
-import React from "react";
+import React, {useRef} from "react";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { Button, Container, Form, Input, Label } from "reactstrap";
 import { useUserAuth } from "../context/Context";
 
 const BookVaccine = ({ details }) => {
-  const { user } = useUserAuth();
+  const { user, bookvaccine } = useUserAuth();
+
+const vacRef= useRef();
+
+const handleSubmit = (e) => {
+e.preventDefault();
+const centerid= details._id;
+const uid = user.uid;
+const vaccine= vacRef.current.value;
+const find = details.vaccines.filter((item) => item.name === vaccine)
+const paid = find[0].paid;
+bookvaccine(vaccine, paid, centerid, uid)
+}
   const available = details.vaccines.filter((item) => item.stock > 0);
-  console.log(available);
+  
+ 
   return (
     <Container className="border-top ">
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Label className="mt-3">Name</Label>
         <Input type="text" name="name" value={user.name} disabled/>
         <Label className="mt-3">Email</Label>
@@ -17,7 +30,7 @@ const BookVaccine = ({ details }) => {
         <Label className="mt-3">Phone Number</Label>
         <Input type="text" name="name" value={user.phone} disabled/>
         <Label className="mt-3">Select Vaacine</Label>
-        <Input type="select" name="Vaccine">
+        <Input type="select" name="Vaccine" innerRef={vacRef}>
           {available.map((item, index) => (
             <option key={index}>{item.name}</option>
           ))}

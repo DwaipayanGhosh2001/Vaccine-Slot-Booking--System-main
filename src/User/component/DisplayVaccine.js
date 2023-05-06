@@ -56,7 +56,6 @@ const PinVaccine = ({ pincode }) => {
         )
           .then((res) => {
             const { data } = res;
-            console.log(data);
             setVacpinDetails(data);
           })
           .catch((error) => {

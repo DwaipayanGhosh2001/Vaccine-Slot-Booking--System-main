@@ -7,7 +7,7 @@ const Bookslot = () => {
   const [active, setActive] = useState(1);
   const toggle = (id) => setActive(id);
   return (
-    <Container fluid className=" pb-2 ">
+    <Container fluid className=" pb-2 bg-slot ">
       <h1 className="text-center text-color pt-5 animate__animated 	animate__bounce animate__slow	3s "
 
       >
@@ -20,11 +20,7 @@ const Bookslot = () => {
       <div className="text-center mx-auto w-100 mt-4 ">
         <h3 className="text-color ">Seacrh By: </h3>
         <Button
-          className={
-            active === 1
-              ? "border-0 fs-4 text-secondary zoom mx-5  mt-2 pt-0 activeText text-uppercase"
-              : "border-0 fs-4 text-secondary zoom mx-5  mt-2 pt-0"
-          }
+          className={ `border-0 fs-4 text-secondary zoom mx-5 mt-2 pt-0 ${active === 1 ? `activeText text-uppercase` : ''}`}
           outline
           style={{ backgroundColor: (hover = "transparent") }}
           onClick={() => toggle(1)}
@@ -32,11 +28,7 @@ const Bookslot = () => {
           District
         </Button>
         <Button
-          className={
-            active === 1
-              ? "border-0 fs-4 text-secondary zoom mx-5  mt-2 pt-0"
-              : "border-0 fs-4 text-secondary zoom mx-5  mt-2 pt-0 activeText text-uppercase"
-          }
+          className={ `border-0 fs-4 text-secondary zoom mx-5 mt-2 pt-0 ${active === 1 ? `` : 'activeText text-uppercase'}`}
           outline
           style={{ backgroundColor: (hover = "transparent") }}
           onClick={() => toggle(2)}

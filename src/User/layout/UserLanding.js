@@ -31,7 +31,7 @@ const UserLanding = () => {
             <div style={{ position: "relative" }}>
               <img
                 className="w-100"
-                src="https://images.thequint.com/thequint%2F2022-02%2Fa1ff7dc4-fa9a-41f3-b4f7-e4d2503ec2a5%2Fthequint_2021_07_17b3e096_7426_48c2_be39_0945663fa5a1_iStock_1291344002__2_.jpg?auto=format%2Ccompress&fmt=webp&width=720&w=1200"
+                src="https://static.toiimg.com/photo/resizemode-75,overlay-toiplus,msid-86445723/86445723.jpg"
                 alt=""
               />
               <motion.h3
@@ -121,12 +121,16 @@ const UserLanding = () => {
       </>
       <div>
         <Card className="bg-image mt-5 shadow-lg p-3 mb-5 bg-body rounded  border-0 py-5">
-          <motion.CardBody className=" w-75 overlay text-white text-center me-auto px-2"
-          initial={{opacity: 0, scale: 0.5}}
-          whileInView = {{opacity: 1, scale: 1}}
-          transition={{
-            duration: 1
-          }}
+          <motion.div
+ initial={{opacity: 0, scale: 0.5}}
+ whileInView = {{opacity: 1, scale: 1}}
+ transition={{
+   duration: 1, 
+   
+ }}
+          >
+<CardBody className=" w-75 overlay text-white text-center me-auto px-2"
+          
           >
             <h1 className="text-uppercase fw-bold mt-3  ">Vaccine</h1>
             <p className=" fs-5 mt-2">
@@ -146,32 +150,38 @@ const UserLanding = () => {
                 in the future.
               </i>
             </p>
-          </motion.CardBody>
-          <motion.CardBody className=" w-75 overlay text-white text-center ms-auto mt-5 px-2"
-           initial={{opacity: 0, scale: 0.5}}
-           whileInView = {{opacity: 1, scale: 1}}
-           transition={{
-             duration: 1,
-            
-           }}
+          </CardBody>
+          
+          </motion.div>
+          <motion.div
+          initial={{opacity: 0, scale: 0.5}}
+          whileInView = {{opacity: 1, scale: 1}}
+          transition={{
+            duration: 1, 
+            delay: 2
+          }}
           >
-            <h1 className="text-uppercase  mt-3  ">Effects</h1>
-            <p className=" fs-5 mt-2">
-              {" "}
-              <i>
-                {" "}
-                There is overwhelming scientific consensus that vaccines are a
-                very safe and effective way to fight and eradicate infectious
-                diseases. The immune system recognizes vaccine
-                agents as foreign, destroys them, and "remembers" them. When the
-                virulent version of an agent is encountered, the body recognizes
-                the protein coat on the agent, and thus is prepared to respond,
-                by first neutralizing the target agent before it can enter
-                cells, and secondly by recognizing and destroying infected cells
-                before that agent can multiply to vast numbers.
-              </i>
-            </p>
-          </motion.CardBody>
+          <CardBody className=" w-75 overlay text-white text-center ms-auto mt-5 px-2"
+           
+           >
+             <h1 className="text-uppercase  mt-3  ">Effects</h1>
+             <p className=" fs-5 mt-2">
+               {" "}
+               <i>
+                 {" "}
+                 There is overwhelming scientific consensus that vaccines are a
+                 very safe and effective way to fight and eradicate infectious
+                 diseases. The immune system recognizes vaccine
+                 agents as foreign, destroys them, and "remembers" them. When the
+                 virulent version of an agent is encountered, the body recognizes
+                 the protein coat on the agent, and thus is prepared to respond,
+                 by first neutralizing the target agent before it can enter
+                 cells, and secondly by recognizing and destroying infected cells
+                 before that agent can multiply to vast numbers.
+               </i>
+             </p>
+           </CardBody>
+          </motion.div>
         </Card>
       </div>
       <motion.div
