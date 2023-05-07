@@ -82,6 +82,7 @@ const RegsiterModal = () => {
 };
 
 const LoginModal = () => {
+  const {click} = useUserAuth();
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -130,6 +131,7 @@ const LoginModal = () => {
                   onClick={() => {
                     navigate("/center");
                     toggle();
+                    click();
                   }}
                 >
                   Vaccine Centre
@@ -193,7 +195,7 @@ const AppointmentModal = () => {
                           <td>{item.centre_name}</td>
                           <td>{item.vaccine}</td>
                           <td>{item.paid ? "Paid" : "Free"}</td>
-                          <td>{item.booking_date}</td>
+                          <td>{item.booking_date.substring(0,10)}</td>
                           <td>
                             {item.allotted_date === null
                               ? "-"
