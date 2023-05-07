@@ -10,7 +10,7 @@ export function useUserAuth() {
 export function UserContextProvider({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [bookdetails, setBookDetails] = useState(null);
+  const [bookdetails, setBookDetails] = useState([]);
   const [change, setChange] = useState(false);
 
   // useEffect(() => {
@@ -138,9 +138,20 @@ export function UserContextProvider({ children }) {
   });
   }
 
+  function showvaccine (uid) {
+axios.get(`https://vaccine-slot-booking-system-backend.vercel.app/appointments/${uid}`)
+.then((res)=> {
+
+const{data} = res;
+setBookDetails(data.appointments)
+})
+.catch((error)=> {
+  console.log(error)
+})
+  }
   function click() {
     setChange(!change);
   }
-  const value = { userlogin, register, logout, user, setUser, click, change, bookvaccine };
+  const value = { userlogin, register, logout, user, setUser, click, change, bookvaccine, showvaccine, bookdetails };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

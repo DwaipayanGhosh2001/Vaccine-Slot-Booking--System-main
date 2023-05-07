@@ -6,17 +6,14 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Row,
   Col,
   ButtonGroup,
-  Container,
   Table,
 } from "reactstrap";
 import UserRegister from "./UserRegister";
 import Userlogin from "./UserLogin";
 import { useUserAuth } from "../context/Context";
-import { toast } from "react-toastify";
 import BookVaccine from "./BookVaccine";
 const RegsiterModal = () => {
   const { click } = useUserAuth();
@@ -148,63 +145,85 @@ const LoginModal = () => {
 };
 
 const AppointmentModal = () => {
-  const { user } = useUserAuth();
+  const { user, showvaccine, bookdetails } = useUserAuth();
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-  // console.log(user.appointdetails.length)
-  // const {centre_name} = user.appointdetails;
-  // console.log(centre_name);
+ 
+  const handleopen = () => {
+    toggle();
+    const uid = user.uid;
+    showvaccine(uid);
+    console.log(bookdetails)
+  }
   return (
     <div>
       {user ? (
         <>
-          <p className="text-white px-md-4 px-1 mb-0 zoom" onClick={toggle}>
+          <p className="text-white px-md-4 px-1 mb-0 zoom" onClick={handleopen}>
             Appointment
           </p>
           <Modal isOpen={modal} centered size="xl">
             <ModalHeader className="mx-auto border-0  pb-0 " toggle={toggle}>
-              <h3 className="text-color">  Vaccine Booking Status</h3>
-             
+              <h3 className="text-color"> Vaccine Booking Status</h3>
             </ModalHeader>
             <ModalBody className="border-top">
-              {user.appointdetails.length === 0 ? (
+              {bookdetails.length === 0 ? (
                 <div>
-                  <h6> No Vaccine Slot Is Booked.</h6>
+                  <h6 className="fw-bold fs-5 ms-4"> No Vaccine Slot Is Booked.</h6>
                 </div>
               ) : (
                 <>
                   <Table>
                     <thead>
-                      <tr>
+                      <tr className="text-center">
                         <th>Sl.No</th>
                         <th>Vaccine Center</th>
                         <th>Vaccine</th>
                         <th>Type</th>
-                        <th>Date</th>
+                        <th>Booking Date</th>
+                        <th>Approved Date</th>
                         <th>Status</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      {user.appointdetails.map((item, index) => (
+                    <tbody className="text-center">
+                      {bookdetails.map((item, index) => (
                         <tr key={index}>
                           <th scope="row">{index + 1}</th>
                           <td>{item.centre_name}</td>
                           <td>{item.vaccine}</td>
                           <td>{item.paid ? "Paid" : "Free"}</td>
-                          <td>{item.date === null ? "-" : item.approved === true ? item.date: "-"}</td>
+                          <td>{item.booking_date}</td>
                           <td>
-                          <Button
-                                className=" text-white rounded px-2 py=1 me-3 "
-                                color={item.approved === null ? "secondary": item.approved === true ? `success`: `danger`}
-                              >
-                                {item.approved === null ? "Pending": item.approved === true ? `Approved`: `Denied`}
-                              </Button>
+                            {item.allotted_date === null
+                              ? "-"
+                              : item.approved === true
+                              ? item.allotted_date
+                              : "-"}
+                          </td>
+                          <td>
+                            <Button
+                              className=" text-white rounded px-2 py=1 me-3 "
+                              color={
+                                item.approved === null
+                                  ? "secondary"
+                                  : item.approved === true
+                                  ? `success`
+                                  : `danger`
+                              }
+                            >
+                              {item.approved === null
+                                ? "Pending"
+                                : item.approved === true
+                                ? `Approved`
+                                : `Denied`}
+                            </Button>
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </Table>
+                  <p className="text-danger mb-0">* Please reach the vaccine center on the Approved Date for your scheduled vaccination.</p>
                 </>
               )}
             </ModalBody>
