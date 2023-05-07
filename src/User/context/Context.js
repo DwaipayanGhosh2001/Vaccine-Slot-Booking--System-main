@@ -111,6 +111,7 @@ export function UserContextProvider({ children }) {
 
   function logout() {
     setUser(null);
+    localStorage.clear();
     toast("You have been logged out!", { type: "error" });
   }
 
