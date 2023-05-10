@@ -16,6 +16,7 @@ import UserProfile from "../src/User/layout/UserProfile";
 import Login from "./center/pages/Login";
 import Landing from "./center/pages/Landing";
 import Signup from "./center/pages/Signup";
+import Bookings from "./center/pages/Bookings";
 import CenterAuthPvtRoute from "./center/routes/CenterAuthPvtRoutes";
 import { CenterAuthProvider } from "./center/context/CenterAuthProvider";
 import { AppointmentModal } from "./User/component/Modal";
@@ -30,14 +31,14 @@ const App = () => {
             <Routes>
               <Route path="/centre-login" element={<Login />} />
               <Route path="/centre-signup" element={<Signup />} />
-              <Route path='centre' element={
+              <Route path='/centre' element={
                 <CenterAuthPvtRoute>
                   <Landing />
                 </CenterAuthPvtRoute>}
               />
-              <Route path='center' element={
+              <Route path='/centre-bookings' element={
                 <CenterAuthPvtRoute>
-                  <Landing />
+                  <Bookings />
                 </CenterAuthPvtRoute>}
               />
             </Routes>

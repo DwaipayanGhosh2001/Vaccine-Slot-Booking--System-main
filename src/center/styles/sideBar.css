@@ -24,6 +24,10 @@
     transform: translate(0);
 }
 
+.sidebar-box div button {
+    width: 100%;
+}
+
 @media (min-width: 1280px) {
     .box {
         width: 20%;

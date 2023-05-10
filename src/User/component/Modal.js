@@ -16,7 +16,6 @@ import Userlogin from "./UserLogin";
 import { useUserAuth } from "../context/Context";
 import BookVaccine from "./BookVaccine";
 const RegsiterModal = () => {
-  const { click } = useUserAuth();
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
 
@@ -64,9 +63,8 @@ const RegsiterModal = () => {
                   color="info"
                   style={{ backgroundColor: (hover = "transparent") }}
                   onClick={() => {
-                    navigate("/center");
+                    navigate("/centre-signup");
                     toggle();
-                    click();
                   }}
                 >
                   Vaccine Centre
@@ -129,9 +127,8 @@ const LoginModal = () => {
                   color="info"
                   style={{ backgroundColor: (hover = "transparent") }}
                   onClick={() => {
-                    navigate("/center");
+                    navigate("/centre");
                     toggle();
-                    click();
                   }}
                 >
                   Vaccine Centre

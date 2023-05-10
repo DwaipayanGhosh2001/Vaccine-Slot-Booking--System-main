@@ -1,0 +1,63 @@
+.centre-booking-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    background-color: #e0f2fe50;
+    backdrop-filter: blur(20px);
+    align-items: start;
+    height: 100%;
+    border-radius: 0.5rem;
+    border: .5px solid transparent;
+    position: relative;
+}
+
+.centre-booking-card:hover {
+    border: .5px solid black;
+}
+
+.booking-update {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+
+.status-update-container {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.status-radio {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem
+}
+
+.status-radio div {
+    display: flex;
+    gap: .2rem;
+    align-items: center;
+}
+
+.udp-vacc-name {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.udp-vacc-name span {
+    color: #3b82f6
+}
+
+.udp-u-data {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+.udp-appr{
+    color: #2dd4bf
+}
+.udp-rjc {
+    color: #db2777
+}
