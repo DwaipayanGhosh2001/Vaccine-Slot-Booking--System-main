@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
+
 const outerBottom = {
     closed: { transition: { staggerChildren: 0.07, staggerDirection: -1 } },
     open: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } }

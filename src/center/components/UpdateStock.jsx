@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Slide, TextField, Alert } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Slide, TextField, Alert, DialogContentText } from '@mui/material';
 import { forwardRef, useState, useRef } from 'react';
 import { useCenterAuth } from '../context/CenterAuthProvider';
 import AddTaskIcon from '@mui/icons-material/AddTask';
@@ -64,9 +64,10 @@ export default function UpdateStock({ open, setOpen }) {
   return (
     <div>
       <Dialog open={open} TransitionComponent={Transition} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description" >
-        <DialogTitle>{"Update vaccine stocks"}</DialogTitle>
+        <DialogTitle>{"Add vaccine stocks"}</DialogTitle>
         <DialogContent>
-          {Error && <Alert severity='error'>{errMsg}</Alert>}
+          {Error && <Alert severity='warning' style={{margin: '.5rem'}}>{errMsg}</Alert>}
+          <DialogContentText>{`Note: Currently you are going to add new stock of a vaccine type, Updated stock will be new stock + current stock, If you want to reduce stock use negative value.`}</DialogContentText>
           <form onSubmit={handelSubmit} style={{margin: '1rem'}}>
             <div style={{ margin: '.75rem 0', display: 'flex', width: '100%' }}>
               <label htmlFor='v-name-update' style={{marginRight: '.75rem'}}>Vaccine Name</label>
@@ -80,17 +81,7 @@ export default function UpdateStock({ open, setOpen }) {
               </select>
             </div>
             <h6 style={{margin: '1rem 0'}}>{`Current stock : ${vAmt}`}</h6>
-            <TextField required inputRef={countRef} variant='outlined' label='update stock' type='number' disabled={disable} placeholder='update new stock quantity' />
-            <div style={{ display: 'flex', gap: '1rem', fontSize: '1.25rem', margin: '1rem 0' }}>
-              <div style={{ gap: '.5rem', display: 'flex' }}>
-                <input required onChange={() => setVType('free')} id='free-type-update' checked={vType === 'free'? true : false} type='radio' value='paid' title='Paid' name='vaccine-type' disabled={disable} style={{cursor: 'pointer'}} />
-                <label htmlFor='free-type-update'style={{cursor: 'pointer'}} >Free</label>
-              </div>
-              <div style={{ gap: '.5rem', display: 'flex' }}>
-                <input required onChange={() => setVType('paid')} id='paid-type-update' checked={vType === 'paid'? true : false} type='radio' value='free' title='Free' name='vaccine-type' disabled={disable} style={{cursor: 'pointer'}} />
-                <label htmlFor='paid-type-update'style={{cursor: 'pointer'}} >Paid</label>
-              </div>
-            </div>
+            <TextField required inputRef={countRef} variant='outlined' label='Add stocks' color='secondary' type='number' disabled={disable} placeholder='Add more stock' />
             <button ref={submitRef} type='submit' hidden />
             <button ref={resetRef} type='reset' hidden />
           </form>

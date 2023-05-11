@@ -23,3 +23,14 @@
     font-weight: 700;
     padding: 10px 0px;
 }
+
+.exception-h1 {
+    color: transparent;
+    font-size: 3rem;
+    line-height: 1;
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+    background-clip: text;
+    font-weight: 700;
+    padding: 10px 0px;
+    text-transform: capitalize;
+}

@@ -16,6 +16,16 @@
     padding: 10px 0px;
 }
 
+.login-page-link {
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+.login-page-link :hover {
+    text-decoration: underline;
+    color: #3284ff;
+}
+
 .register-centre-form {
     margin: 1rem 0;
     background-color: #f5f5f520;

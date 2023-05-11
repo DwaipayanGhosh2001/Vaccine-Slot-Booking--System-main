@@ -7,6 +7,7 @@ import BackGround from '../components/BackGround'
 import { Alert, Button, TextField } from '@mui/material'
 import { AreaNames } from '../assets/AreaNames'
 import { motion } from "framer-motion"
+import { Link } from 'react-router-dom'
 
 const outerVariants = {
   closed: { transition: { staggerChildren: 0.07, staggerDirection: -1 } },
@@ -83,7 +84,10 @@ const Signup = () => {
       <section className='myContainer centre-signup-main'>
         <motion.h1 initial={{opacity: 0}} animate={{opacity: 1}}>Register a new centre</motion.h1>
         <motion.p initial={{opacity: 0}} animate={{opacity: 1}}>Select state and then district first to fill up other details. </motion.p>
-        {Error && <Alert style={{ margin: '.5rem 0' }} variant='outlined' color='error'>{errMsg}</Alert>}
+        <motion.p initial={{opacity: 0}} animate={{opacity: 1}} className='login-page-link' >
+          <Link to='/centre'>Login ?</Link> 
+        </motion.p>
+        {Error && <Alert style={{ margin: '.5rem' }} variant='outlined' color='error'>{errMsg}</Alert>}
         <motion.form variants={outerVariants} initial='closed' animate='open' onSubmit={handleSubmit} className='register-centre-form'>
           <div className='centre-state-dis'>
             <motion.select variants={inner} required onChange={changeState}>
