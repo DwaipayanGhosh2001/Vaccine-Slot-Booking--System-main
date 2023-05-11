@@ -39,28 +39,42 @@ export const BookingCard = ({ data }) => {
   const resetRef = useRef()
   const { updateUserBooking, Error, errMsg } = useCenterAuth()
 
-  useEffect(() => {
-    setHH('hh')
-    setMM('00')
-    setDate(minDay)
-  }, [])
-
-
   function statusChanger(args) {
-    if (args == 'approved') {
+    // console.log(args)
+    if (args === 'approved') {
       setDisable(false)
       setResStatus(true)
-    }
-    if (args == 'decline') {
+     }
+    if (args === 'decline') {
       setDisable(true)
       setResStatus(false)
     }
   }
 
-  const handleClose = () => {
+  useEffect(() => {
+    setHH('hh')
+    setMM('00')
+    setDate(minDay) 
     setDisable(true)
-    setResStatus(null)
+  }, [])
+
+  useEffect(() => {
+    if(data['approved'] !== null) {
+      data['approved'] ? statusChanger('approved') : statusChanger('decline')
+    } else {
+      setResStatus(null)
+      setDisable(true)
+    }
+  },[data['_id']])
+
+  const handleClose = () => {
     resetRef.current.click()
+    setDisable(true)
+    if(data['approved'] !== null) {
+      data['approved'] ? statusChanger('approved') : statusChanger('decline')
+    } else {
+      setResStatus(null)
+    }
     setOpen(false);
   };
 
@@ -87,7 +101,6 @@ export const BookingCard = ({ data }) => {
         const m = `${MM} ${HH.slice(-2)}`
 
         const vaccDate = `${dd}/${mm + 1}/${yy} at ${h}:${m}`
-        console.log(data['_id'])
         updateUserBooking({ id: data['_id'], approved: resStatus, date: vaccDate })
       }
     } else {
@@ -95,6 +108,7 @@ export const BookingCard = ({ data }) => {
     }
 
   }
+
   return (
     <>
       <motion.div variants={inner} className='centre-booking-card'>
@@ -128,11 +142,11 @@ export const BookingCard = ({ data }) => {
           <form onSubmit={handelSubmit} className='status-update-container'>
             <div className='status-radio'>
               <div>
-                <input type='radio' id='vaccine-approved' required value='approved' onChange={() => statusChanger('approved')} name='vaccination-status' title='Approved' checked={data['approved'] === true ? true : false} />
+                <input type='radio' id='vaccine-approved' required value='approved' onChange={() => statusChanger('approved')} onClick={() => statusChanger('approved')} name='vaccination-status' title='Approved' checked={data['approved'] === null ? null : resStatus} />
                 <label htmlFor='vaccine-approved' style={{ cursor: 'pointer' }}>Approved</label>
               </div>
               <div>
-                <input type='radio' id='vaccine-deny' required value='deny' onChange={() => statusChanger('decline')} name='vaccination-status' title='Deny' checked={data['approved'] === false ? true : false} />
+                <input type='radio' id='vaccine-deny' required value='deny' onChange={() => statusChanger('decline')} onClick={() => statusChanger('decline')} name='vaccination-status' title='Deny' checked={data['approved'] === null ? null : !resStatus} />
                 <label htmlFor='vaccine-deny' style={{ cursor: 'pointer' }}>Declined</label>
               </div>
             </div>
