@@ -150,4 +150,7 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+
   margin-left: 20px;
   margin-right: 20px;
 }
+.text-size{
+  display: none !important;
+}
 }

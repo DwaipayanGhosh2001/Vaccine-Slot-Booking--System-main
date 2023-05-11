@@ -11,7 +11,8 @@ const UserLanding = () => {
   return (
     <Container fluid className="mb-5 px-0">
       <>
-        <Swiper
+      <Card>
+      <Swiper
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
@@ -25,7 +26,6 @@ const UserLanding = () => {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper rounded w-100 "
-          style={{ height: "650px" }}
         >
           <SwiperSlide>
             <div style={{ position: "relative" }}>
@@ -35,7 +35,7 @@ const UserLanding = () => {
                 alt=""
               />
               <motion.h3
-                className="  ms-5 d-flex justify-content-start position-absolute text-white w-100 h-100 fw-bold "
+                className="  ms-5 d-flex justify-content-start position-absolute text-white w-100 h-100 fw-bold  text-size"
                 style={{
                   top: 100,
                   left: 0,
@@ -65,7 +65,7 @@ const UserLanding = () => {
                 alt=""
               />
               <motion.h4
-                className={` ms-5 d-flex justify-content-start position-absolute text-white w-100 h-100 fw-bold`}
+                className={` ms-5 d-flex justify-content-start position-absolute text-white w-100 h-100 fw-bold text-size`}
                 style={{
                   top: 20,
                   left: 0,
@@ -95,7 +95,7 @@ const UserLanding = () => {
                 alt=""
               />
               <motion.h3
-                className=" d-flex justify-content-end align-items-center position-absolute text-white fw-bold w-100 h-100"
+                className=" d-flex justify-content-end align-items-center position-absolute text-white fw-bold w-100 h-100  text-size"
                 style={{
                   top: 120,
                   left: -30,
@@ -118,6 +118,8 @@ const UserLanding = () => {
             </div>
           </SwiperSlide>
         </Swiper>
+      </Card>
+        
       </>
       <div>
         <Card className="bg-image mt-5 shadow-lg p-3 mb-5 bg-body rounded  border-0 py-5">
