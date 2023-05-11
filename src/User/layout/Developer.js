@@ -181,7 +181,7 @@ export default function Developers() {
                 name={`Akansha Priya`}
                 role={`Documentation and Chart Developement`}
                 image={akansha}
-                about={` A programming geek who prefers tea over coffee. Interested in Android, Flutter, Dart and other mobile app stuffs. Today I work mostly with Flutter, Node.js, Express and MongoDB and also looking forward to learn React and DevOps.`} 
+                about={` An aspiring developer and UI/UX designer. Currently pursing Masters and working on my competetive programming skills. Have passion for front-end web developement using React, HTML and CSS.`} 
                 github={`https://github.com/Priyaakansha`}
                 instagram={``}
                 google={``}
