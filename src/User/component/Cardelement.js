@@ -4,6 +4,10 @@ import { BookSlot } from "./Modal";
 const Cardelement = ({ details }) => {
   return (
     <>
+    <div className="d-flex justify-content-center mt-3">
+      <p className="px-5 py-1 text-white text-uppercase rounded bg-paid mb-0 mx-5">Paid</p>
+      <p className="px-5 py-1 text-dark text-uppercase rounded bg-free mb-0 mx-5">Free</p>
+      </div>
       <Container className="m-5 w-100 mx-auto">
         <ListGroup>
           {details.map((item, index) => (

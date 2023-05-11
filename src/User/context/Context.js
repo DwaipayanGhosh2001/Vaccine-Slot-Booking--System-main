@@ -16,7 +16,8 @@ export function UserContextProvider({ children }) {
   
   useEffect(() => {
     const pathName = location.pathname
-    if (pathName.includes('centre')) {
+    const path = location.pathname
+    if (pathName.includes('centre') || path.includes('devs')) {
       setChange(true)
     } else {
       setChange(false)
