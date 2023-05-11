@@ -7,7 +7,8 @@ const Bookslot = () => {
   const [active, setActive] = useState(1);
   const toggle = (id) => setActive(id);
   return (
-    <Container fluid className=" pb-2 bg-slot ">
+    <div style={{backgroundColor:"#F5F5F5"}}>
+       <Container fluid className=" pb-2 bg-slot ">
       <h1 className="text-center text-color pt-5 animate__animated 	animate__bounce animate__slow	3s "
 
       >
@@ -46,6 +47,8 @@ const Bookslot = () => {
         </>
       )}
     </Container>
+      </div>
+   
   );
 };
 export default Bookslot;

@@ -157,7 +157,7 @@ export default function Developers() {
                 name={`Moinak Majumdar`}
                 role={`Vaccine-side Front-end Developement`}
                 image={moinak}
-                about={` A passionate full stack web developer from India, I design and build modern fullstack web site. Alwayse keen to learn new web tech`}
+                about={` A passionate full stack web developer from India, I design and build modern fullstack web site. Alwayse keen to learn new web tech.`}
                 github={`https://github.com/Moinak-Majumdar`}
                 instagram={``}
                 google={``}
@@ -179,7 +179,7 @@ export default function Developers() {
             <div class="col">
             <Devcard
                 name={`Akansha Priya`}
-                role={`Documentation and Chart Developement`}
+                role={`Documentation Management`}
                 image={akansha}
                 about={` An aspiring developer and UI/UX designer. Currently pursing Masters and working on my competetive programming skills. Have passion for front-end web developement using React, HTML and CSS.`} 
                 github={`https://github.com/Priyaakansha`}
