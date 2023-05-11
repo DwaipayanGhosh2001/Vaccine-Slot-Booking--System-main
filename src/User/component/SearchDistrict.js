@@ -6,6 +6,7 @@ import { useUserAuth } from "../context/Context";
 
 import { DistrictVaccine, PinVaccine } from "./DisplayVaccine";
 const Searchdistrict = () => {
+  const { user } = useUserAuth();
   const [state, setState] = useState("Select State");
   const [district, setDistrict] = useState("Select District");
 
@@ -14,12 +15,12 @@ const Searchdistrict = () => {
   useEffect(() => {
     // Get the districts for the selected state
     const selectedState = states.find((item) => item.state === state);
-    console.log(selectedState);
-    if (selectedState) {
+       if (selectedState) {
       // Set the first district as the default value
       setDistrict(selectedState.districts[0]);
     }
   }, [state]);
+  
   return (
     <Container fluid>
       <div>
@@ -49,7 +50,7 @@ const Searchdistrict = () => {
                   placeholder="Enter state"
                   className="rounded-pill "
                   value={state}
-                  onChange={(e) => setState(e.target.value)}
+                  onChange={(e) => user? setState(e.target.value) : toast("Please Log-In first", { type: "error" }) }
                 >
                   {states.map((item, index) => (
                     <option key={index}>{item.state}</option>
