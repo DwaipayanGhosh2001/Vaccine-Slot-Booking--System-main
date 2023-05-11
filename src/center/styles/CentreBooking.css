@@ -1,0 +1,25 @@
+.centre-booking-grid {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+    .centre-booking-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 4rem;
+    }
+}
+
+.booking-h1 {
+    margin-top: 2rem;
+    color: transparent;
+    font-size: 3rem;
+    line-height: 1;
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+    background-clip: text;
+    font-weight: 700;
+    padding: 10px 0px;
+}

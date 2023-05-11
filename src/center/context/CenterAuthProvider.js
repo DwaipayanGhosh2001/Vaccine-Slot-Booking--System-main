@@ -18,6 +18,7 @@ export function CenterAuthProvider({ children }) {
 
     const [Loading, setLoading] = useState(true)
     const [CurrentCenter, setCurrentCenter] = useState(null)
+    const [BookingData, setBookingData] = useState(null)
     const [errMsg, setErrMsg] = useState('')
     const [Error, setError] = useState(false)
     const navigate = useNavigate()
@@ -36,7 +37,7 @@ export function CenterAuthProvider({ children }) {
 
     async function signup(args) {
         // to create a new center with args containing require data address, name etc to post.
-        await axios.post('https://vaccine-slot-booking-system-backend.vercel.app/register-vaccination-centre', {...args}, { headers: { 'Content-Type': 'application/json'}}).then((res) => {
+        await axios.post('https://vaccine-slot-booking-system-backend.vercel.app/register-vaccination-centre', { ...args }, { headers: { 'Content-Type': 'application/json' } }).then((res) => {
             const d = res.data
             getCentre(d['_id'])
         }).catch((err) => {
@@ -72,6 +73,7 @@ export function CenterAuthProvider({ children }) {
         setCurrentCenter(null)
         localStorage.removeItem('centre_data')
         localStorage.removeItem('stock')
+        localStorage.removeItem('bookings')
         setErrMsg(null)
         setLoading(false)
         //navigate('/center-login')
@@ -121,6 +123,39 @@ export function CenterAuthProvider({ children }) {
         setLoading(false)
     }
 
+    async function getBookings(id) {
+        setLoading(true)
+        await axios.get(`https://vaccine-slot-booking-system-backend.vercel.app/bookings/${id}`, { headers: { 'Content-Type': 'application/json' } }).then((res) => {
+            const data = res.data;
+            setBookingData(data['bookings'])
+        }).catch((err) => {
+            console.log(err);
+        }).finally(() => {
+            setLoading(false)
+        })
+    }
+
+    async function updateUserBooking(params) {
+        setError(true)
+        const body = params['approved'] ? { approved: params['approved'], date: params['date'] } : { approved: params['approved'] }
+        await axios.post(`https://vaccine-slot-booking-system-backend.vercel.app/approve-booking/${params['id']}`, { ...body }, { headers: { 'Content-Type': 'application/json' } }).then((res) => {
+            const s = res.status;
+            if (s.toString() === '200') {
+                setErrMsg('User vaccination data is set.')
+            } else if (s.toString() === '202') {
+                setErrMsg('Vaccination request is denied.')
+            } else {
+                setErrMsg('Something went wrong!')
+            }
+        }).catch((err) => {
+            console.log(err)
+            setErrMsg('Failed to set vaccination date')
+            setTimeout(() => {
+                setError(false)
+            }, 5000)
+        })
+    }
+
     useEffect(() => {
         const storage = localStorage.getItem('centre_data')
         const stock = localStorage.getItem('stock')
@@ -128,17 +163,19 @@ export function CenterAuthProvider({ children }) {
             const info = JSON.parse(storage)
             const id = info['_id']
             getCentre(id)
+            getBookings(id)
         } else {
             if (stock !== null) {
                 const data = { ...JSON.parse(storage), vaccines: JSON.parse(stock) }
                 setCurrentCenter(data)
+                getBookings(CurrentCenter['_id'])
                 navigate('/centre')
             }
         }
         setLoading(false)
     }, [])
 
-    const value = { signup, login, logout, CurrentCenter, errMsg, Error, updateCenterStock, getCentre, addNewVaccine }
+    const value = { signup, login, logout, CurrentCenter, errMsg, Error, updateCenterStock, getCentre, addNewVaccine, BookingData, updateUserBooking }
 
     return (
         <CenterAuthContext.Provider value={value}>
