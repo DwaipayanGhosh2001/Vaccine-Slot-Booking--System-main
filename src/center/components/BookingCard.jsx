@@ -29,8 +29,9 @@ export const BookingCard = ({ data }) => {
   const bookingTime = allow.slice(11)
   const bookingDate = allow.slice(0, 10)
   const [open, setOpen] = useState(false);
+  const [Pending, setPending] = useState(true)
   const [Disable, setDisable] = useState(true)
-  const [resStatus, setResStatus] = useState(null)
+  const [resStatus, setResStatus] = useState('')
   const [Date, setDate] = useState('')
   const [MM, setMM] = useState('mm');
   const [HH, setHH] = useState('hh');
@@ -43,11 +44,11 @@ export const BookingCard = ({ data }) => {
     // console.log(args)
     if (args === 'approved') {
       setDisable(false)
-      setResStatus(true)
+      setResStatus('approved')
      }
     if (args === 'decline') {
       setDisable(true)
-      setResStatus(false)
+      setResStatus('decline')
     }
   }
 
@@ -61,8 +62,10 @@ export const BookingCard = ({ data }) => {
   useEffect(() => {
     if(data['approved'] !== null) {
       data['approved'] ? statusChanger('approved') : statusChanger('decline')
+      setPending(false)
     } else {
-      setResStatus(null)
+      setPending(true)
+      setResStatus('')
       setDisable(true)
     }
   },[data['_id']])
@@ -72,8 +75,10 @@ export const BookingCard = ({ data }) => {
     setDisable(true)
     if(data['approved'] !== null) {
       data['approved'] ? statusChanger('approved') : statusChanger('decline')
+      setPending(false)
     } else {
-      setResStatus(null)
+      setPending(true)
+      setResStatus('')
     }
     setOpen(false);
   };
@@ -90,7 +95,7 @@ export const BookingCard = ({ data }) => {
   function handelSubmit(e) {
     e.preventDefault()
 
-    if (resStatus) {
+    if (resStatus === 'approved') {
       if (HH == 'hh') {
         return alert('Please select vaccination time (Hour).')
       } else {
@@ -101,10 +106,10 @@ export const BookingCard = ({ data }) => {
         const m = `${MM} ${HH.slice(-2)}`
 
         const vaccDate = `${dd}/${mm + 1}/${yy} at ${h}:${m}`
-        updateUserBooking({ id: data['_id'], approved: resStatus, date: vaccDate })
+        updateUserBooking({ id: data['_id'], approved: true, date: vaccDate })
       }
     } else {
-      updateUserBooking({ id: data['_id'], approved: resStatus })
+      updateUserBooking({ id: data['_id'], approved: false })
     }
 
   }
@@ -113,7 +118,7 @@ export const BookingCard = ({ data }) => {
     <>
       <motion.div variants={inner} className='centre-booking-card'>
         <div className='booking-update' >
-          <IconButton onClick={() => setOpen(true)} >
+          <IconButton onClick={() => setOpen(true)} hidden={!Pending} >
             <CachedIcon />
           </IconButton>
         </div>
@@ -122,7 +127,7 @@ export const BookingCard = ({ data }) => {
           <span>
             {` ${data.vaccine}`}
           </span>
-          <span style={{ color: data.paid ? '#db2777' : '#34d399' }}>
+          <span style={{ color: data.paid ? '#db2777' : '#34d399', fontWeight: 'bold'}}>
             {` - ${data.paid ? 'Paid' : 'Free'}`}
           </span>
         </h4>
@@ -132,7 +137,7 @@ export const BookingCard = ({ data }) => {
         {data['approved'] === true && <h4 className='udp-appr'>{`Vaccination Date: ${data['allotted_date']}`}</h4>}
         {data['approved'] === false && <h4 className='udp-rjc'>{`Vaccination request declined.`}</h4>}
       </motion.div>
-      <Dialog open={open} TransitionComponent={Transition} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description">
+      <Dialog open={open} TransitionComponent={Transition} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description" hidden={!Pending}>
         <DialogTitle style={{ textTransform: 'capitalize' }}>{`${data.vaccine} - ${data.paid ? 'Paid' : 'Free'} `}</DialogTitle>
         {Error && <Alert style={{ margin: '.5rem 1rem' }} variant='outlined' color='warning'>{errMsg}</Alert>}
         <DialogContent>
@@ -142,11 +147,11 @@ export const BookingCard = ({ data }) => {
           <form onSubmit={handelSubmit} className='status-update-container'>
             <div className='status-radio'>
               <div>
-                <input type='radio' id='vaccine-approved' required value='approved' onChange={() => statusChanger('approved')} onClick={() => statusChanger('approved')} name='vaccination-status' title='Approved' checked={data['approved'] === null ? null : resStatus} />
+                <input type='radio' id='vaccine-approved' required value='approved' onChange={() => statusChanger('approved')} name='vaccination-status' title='Approved' checked={resStatus === 'approved' ? true : false } />
                 <label htmlFor='vaccine-approved' style={{ cursor: 'pointer' }}>Approved</label>
               </div>
               <div>
-                <input type='radio' id='vaccine-deny' required value='deny' onChange={() => statusChanger('decline')} onClick={() => statusChanger('decline')} name='vaccination-status' title='Deny' checked={data['approved'] === null ? null : !resStatus} />
+                <input type='radio' id='vaccine-deny' required value='deny' onChange={() => statusChanger('decline')} name='vaccination-status' title='Deny' checked={resStatus === 'decline' ? true : false} />
                 <label htmlFor='vaccine-deny' style={{ cursor: 'pointer' }}>Declined</label>
               </div>
             </div>

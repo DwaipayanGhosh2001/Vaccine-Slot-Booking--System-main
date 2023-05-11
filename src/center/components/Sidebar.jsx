@@ -27,8 +27,14 @@ const Sidebar = () => {
     const [Open, toggleOpen] = useState(false)
     const [addStocks, setAddStocks] = useState(false)
     const [updateStocks, setUpdateStocks] = useState(false)
-    const { logout } = useCenterAuth()
+    const { logout, CurrentCenter, getBookings } = useCenterAuth()
     const navigate = useNavigate();
+
+    async function fetchBooking() {
+        getBookings(CurrentCenter['_id']).then(() => {
+            navigate('/centre-bookings')
+        })
+    }
 
     return (
         <section style={{position: 'relative'}}>
@@ -42,13 +48,13 @@ const Sidebar = () => {
                     <Button onClick={() => navigate('/')} color='inherit' variant='contained' startIcon={<HouseIcon />}>Home</Button>
                 </motion.div>
                 <motion.div variants={innerBottom}>
-                    <Button onClick={() => navigate('/centre-bookings')} color='primary' variant='contained' startIcon={<ChecklistIcon />}>Bookings</Button>
+                    <Button onClick={fetchBooking} color='primary' variant='contained' startIcon={<ChecklistIcon />}>Bookings</Button>
                 </motion.div>
                 <motion.div variants={innerBottom}>
-                    <Button onClick={() => setAddStocks(!addStocks)} color='success' variant='contained' startIcon={<AddIcon />}>Add stock</Button>
+                    <Button onClick={() => setAddStocks(!addStocks)} color='success' variant='contained' startIcon={<AddIcon />}>New vaccine</Button>
                 </motion.div>
                 <motion.div variants={innerBottom}>
-                    <Button onClick={() => setUpdateStocks(!updateStocks)} color='secondary' variant='contained' startIcon={<SyncAltIcon />}>update stock</Button>
+                    <Button onClick={() => setUpdateStocks(!updateStocks)} color='secondary' variant='contained' startIcon={<SyncAltIcon />}>add stocks</Button>
                 </motion.div>
                 <motion.div variants={innerBottom}>
                     <Button onClick={logout} variant='contained' color='warning' startIcon={<LogoutIcon />}>Logout</Button>
