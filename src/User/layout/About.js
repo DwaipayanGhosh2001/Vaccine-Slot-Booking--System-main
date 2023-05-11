@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Button } from "reactstrap";
 import { useUserAuth } from "../context/Context";
 import { Link } from "react-router-dom";
-
+import about from "../Img/about.jpg"
 
 const About = () => {
   const {click} = useUserAuth();
   return (
-    <div className="bg-about">
+    <div className="bg-about" style={{backgroundImage: `url(${about})`}}>
       <div className="ms-md-auto w-50 text-dark about ">
         <h1
           className=" pt-5 fw-bold  w-75 ms-md-auto fst-italic mx-xs-auto "
