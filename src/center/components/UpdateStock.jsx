@@ -25,7 +25,7 @@ export default function UpdateStock({ open, setOpen }) {
   const [disable, setDisable] = useState(true)
 
   function selectVaccine (param) {
-    console.log(param)
+    // console.log(param)
     for (const {name, stock, paid} of DB) {
       if(name === param['name'] && paid === param['paid']) {
         setVAmt(stock)

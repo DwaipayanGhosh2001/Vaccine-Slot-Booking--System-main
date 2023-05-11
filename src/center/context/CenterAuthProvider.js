@@ -136,20 +136,23 @@ export function CenterAuthProvider({ children }) {
     }
 
     async function updateUserBooking(params) {
-        setError(true)
         const body = params['approved'] ? { approved: params['approved'], date: params['date'] } : { approved: params['approved'] }
         await axios.post(`https://vaccine-slot-booking-system-backend.vercel.app/approve-booking/${params['id']}`, { ...body }, { headers: { 'Content-Type': 'application/json' } }).then((res) => {
             const s = res.status;
+            setError(true)
             if (s.toString() === '200') {
                 setErrMsg('User vaccination data is set.')
+                getBookings(CurrentCenter['_id'])
             } else if (s.toString() === '202') {
                 setErrMsg('Vaccination request is denied.')
+                getBookings(CurrentCenter['_id'])
             } else {
                 setErrMsg('Something went wrong!')
             }
         }).catch((err) => {
             console.log(err)
             setErrMsg('Failed to set vaccination date')
+        }).finally(() => {
             setTimeout(() => {
                 setError(false)
             }, 5000)

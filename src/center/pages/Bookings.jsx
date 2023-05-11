@@ -51,10 +51,14 @@ const Bookings = () => {
   }
 
   useEffect(() => {
-    changeDb('pending')
+    if(BookingData) {
+      changeDb('pending')
+    } else {
+      navigate('/centre')
+    }
   }, [])
 
-  if (BookingData) {
+  if (Data.length > 0) {
     return (
       <>
         <BookingBar changer={changeDb} />
@@ -71,8 +75,6 @@ const Bookings = () => {
         <BackGround />
       </>
     )
-  } else {
-    navigate('/centre')
   }
 
 
