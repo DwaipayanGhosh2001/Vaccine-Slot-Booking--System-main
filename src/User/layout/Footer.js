@@ -9,7 +9,7 @@ const Footer = () => {
     {change !== true && 
      <Container fluid className=" color py-2 text-white d-sm-flex justify-content-between py-3">
 
-     <div className="w-25 my-auto text-center text-sm-center">
+     <div className="w-25 mx-auto my-auto text-center text-sm-center faq">
        <h6>About</h6>
        <p className="mb-0" style={{ fontSize: "12px" }}>
        The Vaccine Slot System project is a software application designed

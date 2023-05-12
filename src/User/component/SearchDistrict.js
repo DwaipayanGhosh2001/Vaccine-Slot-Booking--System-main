@@ -115,11 +115,11 @@ const Searchpin = () => {
           </p>
         )}
       </div>
-      <Form className="w-50 mx-auto mt-5">
+      <Form className="w-50 mx-auto mt-5 faq">
         <Input
           type="number"
           name="pincode"
-          className="w-50 mx-auto rounded-pill mb-4"
+          className="w-50 mx-auto rounded-pill mb-4 pin"
           placeholder="Enter your postal code"
           value={pin.pincode}
           onChange={handleInput}

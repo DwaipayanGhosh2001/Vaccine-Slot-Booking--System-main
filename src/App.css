@@ -302,6 +302,9 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9) !important; /* 
 .about-text{
   font-size: 15px;
 }
+.pin{
+  width: 100% !important;
+}
 }
 @media screen and (max-width: 480px) {
 .modalbtn{
