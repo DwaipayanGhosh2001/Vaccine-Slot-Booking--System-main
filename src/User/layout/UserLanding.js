@@ -49,7 +49,7 @@ const UserLanding = () => {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >
-                  <h3 className="  ms-5  text-white w-75 fw-bold text-size">
+                  <h3 className="ms-5  text-white w-75 fw-bold text-size">
                     Vaccines and antibiotics have made many infectious diseases
                     a thing of the past; we've come to expect that public health
                     and modern science can conquer all microbes. But nature is a
@@ -133,8 +133,8 @@ const UserLanding = () => {
             }}
           >
             <CardBody className=" w-75 overlay text-white text-center me-auto px-2">
-              <h1 className="text-uppercase fw-bold mt-3  ">Vaccine</h1>
-              <p className=" fs-5 mt-2">
+              <h3 className="text-uppercase fw-bold mt-3  ">Vaccine</h3>
+              <p className="fs-8 mt-2">
                 {" "}
                 <i>
                   {" "}
@@ -163,8 +163,8 @@ const UserLanding = () => {
             }}
           >
             <CardBody className=" w-75 overlay text-white text-center ms-auto mt-5 px-2">
-              <h1 className="text-uppercase  mt-3  ">Effects</h1>
-              <p className=" fs-5 mt-2">
+              <h3 className="text-uppercase  mt-3  ">Effects</h3>
+              <p className=" fs-8 mt-2">
                 {" "}
                 <i>
                   {" "}

@@ -1,25 +1,36 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "VaccBook",
+  "name": "VaccBook",
+  "Description": "Vaccine Slot Booking System developed by MCA 1st year students : 1.DWAIPAYAN GHOSH, 2.MOINAK MAJUMDAR, 3.VISHAL KUMAR PASWAN, 4.AKANSHA PRIYA from MAKAUT University.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/logo512.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "512x512",
+      "purpose": "maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/logo192.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "id": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#6dd5fa",
   "background_color": "#ffffff"
 }

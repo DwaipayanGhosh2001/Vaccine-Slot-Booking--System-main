@@ -139,7 +139,7 @@ export const BookingCard = ({ data }) => {
       </motion.div>
       <Dialog open={open} TransitionComponent={Transition} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description" hidden={!Pending}>
         <DialogTitle style={{ textTransform: 'capitalize' }}>{`${data.vaccine} - ${data.paid ? 'Paid' : 'Free'} `}</DialogTitle>
-        {Error && <Alert style={{ margin: '.5rem 1rem' }} variant='outlined' color='warning'>{errMsg}</Alert>}
+        {Error && <Alert style={{ margin: '.5rem 1rem' }} variant='outlined' color='success'>{errMsg}</Alert>}
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             {`Booked by ${data.name}, ${bookingDate} at ${bookingTime} ${parseInt(bookingTime.slice(0, 2)) < 12 ? 'AM' : 'PM'}`}
