@@ -8,14 +8,14 @@ const About = () => {
   const {click} = useUserAuth();
   return (
     <div className="bg-about" style={{backgroundImage: `url(${about})`}}>
-      <div className="ms-md-auto w-50 text-dark about ">
+      <div className="ms-md-auto w-50 text-dark about faq mx-auto mx-md-0">
         <h1
-          className=" pt-5 fw-bold  w-75 ms-md-auto fst-italic mx-xs-auto "
+          className=" pt-3 fw-bold  w-75 ms-md-auto fst-italic mx-auto mx-md-0"
           style={{ fontFamily: "sans-serif" }}
         >
           About
         </h1>
-        <h3 className=" mt-3 fs-5 w-75 ms-md-auto animate__fadeInLeft animate__animated	1s about mx-xs-auto">
+        <h3 className=" mt-3 fs-5 w-75 ms-md-auto animate__fadeInLeft animate__animated	1s about mx-auto mx-md-0">
           <i className="about-text">
             The Vaccine Slot System project is a software application designed
             to facilitate the process of finding and booking available slots for

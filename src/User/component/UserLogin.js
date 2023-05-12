@@ -51,7 +51,7 @@ const Userlogin = () => {
               <CardFooter className="mt-3 d-flex justify-content-center w-100 border-0">
                 <Button
                   type="submit"
-                  className=" rounded-pill px-5 w-50 text-success zoom"
+                  className=" rounded-pill w-50 text-success zoom"
                   color="success"
                   outline
                   style={{ backgroundColor: (hover = "transparent") }}

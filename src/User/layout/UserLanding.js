@@ -13,6 +13,7 @@ const UserLanding = () => {
       <>
         <Card style={{ width: "100%", maxHeight: "650px" }}>
           <Swiper
+          loop={true}
             spaceBetween={30}
             centeredSlides={true}
             autoplay={{
@@ -35,7 +36,7 @@ const UserLanding = () => {
                   alt=""
                 />
                 <motion.Card
-                  className=" position-absolute w-50 mt-5 "
+                  className=" position-absolute w-50 mt-5 faq"
                   style={{
                     top: 0,
                     left: 0,
@@ -49,7 +50,7 @@ const UserLanding = () => {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >
-                  <h3 className="ms-5  text-white w-75 fw-bold text-size">
+                  <h3 className="ms-5 text-white w-75 fw-bold text-size">
                     Vaccines and antibiotics have made many infectious diseases
                     a thing of the past; we've come to expect that public health
                     and modern science can conquer all microbes. But nature is a
@@ -66,9 +67,9 @@ const UserLanding = () => {
                   alt=""
                 />
                 <motion.Card
-                  className=" position-absolute w-50 "
+                  className=" position-absolute w-50  mt-5  faq"
                   style={{
-                    top: 20,
+                    top: 0,
                     left: 0,
                     textShadow: "2px 1px 1px black",
                   }}
@@ -80,7 +81,7 @@ const UserLanding = () => {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >
-                  <h4 className={` ms-5 text-white w-100  fw-bold text-size `}>
+                  <h4 className={` ms-3 ms-md-5  text-white w-100  fw-bold text-size `}>
                     Without equity, pandemic battles will fail. Viruses will
                     simply recirculate, and perhaps undergo mutations or changes
                     that render vaccines useless, passing through the
@@ -96,10 +97,9 @@ const UserLanding = () => {
                   src="https://images.theconversation.com/files/373552/original/file-20201208-13-17kqqxa.jpg?ixlib=rb-1.1.0&rect=0%2C327%2C3528%2C1764&q=45&auto=format&w=1356&h=668&fit=crop"
                   alt=""
                 />
-                <motion.Card className=" position-absolute w-50"
+                <motion.Card className=" position-absolute w-50 mt-5 mt-md-0 slide3 faq"
                 style={{
-                  top: "40%",
-                  left: "45%",
+                  
                   textShadow: "2px 1px 1px black",
                 }}
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -110,7 +110,7 @@ const UserLanding = () => {
                 }}
                 >
                 <h3
-                  className="  text-white fw-bold w-50 float-end  text-size"
+                  className="  text-white fw-bold w-50 float-end  mt-5 mt-md-0 text-size"
                   
                 >
                   It's important for children to be vaccinated so that they have the opportunity to become adults.
@@ -123,7 +123,7 @@ const UserLanding = () => {
         </Card>
       </>
       <div>
-        <Card className="bg-image mt-5 shadow-lg p-3 mb-5 bg-body rounded  border-0 py-5">
+        <Card className="bg-image mt-5 shadow-lg p-3 mb-5 bg-body rounded  border-0 py-5 px-5 ">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -132,11 +132,11 @@ const UserLanding = () => {
               duration: 1,
             }}
           >
-            <CardBody className=" w-75 overlay text-white text-center me-auto px-2">
-              <h3 className="text-uppercase fw-bold mt-3  ">Vaccine</h3>
+            <CardBody className=" w-50 overlay text-dark text-center me-md-auto mx-auto px-2 faq">
+              <h3 className="text-uppercase fw-bold mt-3  ">Vaccine</h3> 
               <p className="fs-8 mt-2">
                 {" "}
-                <i>
+                <i className="">
                   {" "}
                   A vaccine is a biological preparation that provides active
                   acquired immunity to a particular infectious or malignant
@@ -162,11 +162,11 @@ const UserLanding = () => {
               delay: 1,
             }}
           >
-            <CardBody className=" w-75 overlay text-white text-center ms-auto mt-5 px-2">
+            <CardBody className=" w-50 overlay text-dark text-center ms-md-auto mx-auto mt-5 px-2 faq">
               <h3 className="text-uppercase  mt-3  ">Effects</h3>
               <p className=" fs-8 mt-2">
                 {" "}
-                <i>
+                <i className="">
                   {" "}
                   There is overwhelming scientific consensus that vaccines are a
                   very safe and effective way to fight and eradicate infectious
