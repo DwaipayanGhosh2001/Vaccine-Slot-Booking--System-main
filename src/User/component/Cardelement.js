@@ -36,7 +36,7 @@ const Cardelement = ({ details }) => {
                       color="secondary"
                       disabled
                     >
-                      Book SLot
+                      Book 
                     </Button>
                   </div>
                 </ListGroupItem>
@@ -52,7 +52,7 @@ const Cardelement = ({ details }) => {
                       </p>
                       <p className="mb-0 ms-1">{item.address}</p>
                       <div>
-                        <div className="d-flex flex-wrap">
+                        <div className="d-flex flex-wrap w-75 faq ">
                           {item.vaccines.map((vaccine, index) => (
                             <div key={index}>
                               {vaccine.stock > 0 && (
@@ -75,7 +75,7 @@ const Cardelement = ({ details }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="my-auto ">
+                    <div className="my-auto">
                       <BookSlot details={item} />
                     </div>
                   </ListGroupItem>

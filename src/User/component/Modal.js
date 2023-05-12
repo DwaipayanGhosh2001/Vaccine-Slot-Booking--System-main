@@ -180,9 +180,9 @@ const AppointmentModal = () => {
                         <th>Vaccine Center</th>
                         <th>Vaccine</th>
                         <th className="d-none d-md-block">Type</th>
-                        <th className="d-none d-md-block">Booking Date</th>
+                        <th>Booking Date</th>
                         <th>Approved Date</th>
-                        <th>Status</th>
+                         {/* <th className="d-none d-md-block" >Status</th>  */}
                       </tr>
                     </thead>
                     <tbody className="text-center">
@@ -192,15 +192,24 @@ const AppointmentModal = () => {
                           <td>{item.centre_name}</td>
                           <td>{item.vaccine}</td>
                           <td className="d-none d-md-block">{item.paid ? "Paid" : "Free"}</td>
-                          <td className="d-none d-md-block">{item.booking_date.substring(0,10)}</td>
-                          <td>
-                            {item.allotted_date === null
-                              ? "-"
+                          <td >{item.booking_date.substring(0,10)}</td>
+                          <td 
+                          className={ `fw-bold ${item.approved === null
+                            ? "text-uppercase text-secondary"
+                            : item.approved === true
+                            ? `text-success`
+                            : `text-danger text-uppercase`}`
+                            
+                          }
+                          >
+                            
+                            {item.approved === null
+                              ? "Pending"
                               : item.approved === true
                               ? item.allotted_date
-                              : "-"}
+                              : "Denied"}
                           </td>
-                          <td>
+                           {/* <td className="d-none d-md-block">
                             <Button
                               className=" text-white rounded px-2 py=1 me-3 "
                               color={
@@ -217,7 +226,7 @@ const AppointmentModal = () => {
                                 ? `Approved`
                                 : `Denied`}
                             </Button>
-                          </td>
+                          </td>  */}
                         </tr>
                       ))}
                     </tbody>
@@ -246,7 +255,7 @@ const BookSlot = ({ details }) => {
         className="btn-color text-white rounded px-3  me-3 zoom"
         onClick={toggle}
       >
-        Book Slot
+        Book
       </Button>
       <Modal isOpen={modal}>
         <ModalHeader
