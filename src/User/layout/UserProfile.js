@@ -40,7 +40,7 @@ console.log(addRef.current.value);
     <div style={{backgroundColor:"#F5F5F5"}}>
       {user && 
       <Container fluid="md" className="d-flex justify-content-center py-5" >
-      <Card className="w-50 shadow p-3 mb-4 bg-body rounded mt-2 pb-0">
+      <Card className="w-50 shadow p-3 mb-4 bg-body rounded mt-2 pb-0 faq">
         <CardHeader
           className="text-center text-color "
           style={{ backgroundColor: "transparent" }}
