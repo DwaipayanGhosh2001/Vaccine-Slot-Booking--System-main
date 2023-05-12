@@ -117,9 +117,9 @@ border: none;
 }
  .overlay{
   /* border: 5px solid black; */
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1a84ee20;
   border-radius: 20px;
-  
+ backdrop-filter: blur(5px); 
 } 
 .bg-about {
   background-position: center;
@@ -266,9 +266,17 @@ background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, F
 
 
 @media screen and (max-width: 768px) {
-  .w-50{
-    width: 100% !important;
+  .faq{
+    width: 90% !important;
   }
+  .text-size{
+   font-size: 10px !important;
+  }
+  .slide3{
+    top: 0 !important;
+    left: 0 !important;
+  }
+
   body{
     font-size: 12px;
   }
@@ -309,4 +317,8 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+
   filter: none;
   border: 2px solid #0ea5e9;
   -webkit-transition: all .8s ease-in-out;
+}
+.slide3{
+  top: 40%;
+  left: 45%;
 }

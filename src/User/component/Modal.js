@@ -42,10 +42,10 @@ const RegsiterModal = () => {
         <ModalBody className="pt-0">
           <ButtonGroup className="w-100 border-top pt-3">
             <Row className="w-100 mx-auto">
-              <Col md={6}>
+              <Col md={6} xs={6}>
                 <Button
                   className={
-                    "w-100 rounded-pill  border-3 border-info text-white fw-bold zoom active"
+                    "w-100 rounded-pill border-3 border-info text-white fw-bold zoom active px-1 px-sm-auto"
                   }
                   outline
                   color="info"
@@ -54,10 +54,10 @@ const RegsiterModal = () => {
                   User
                 </Button>
               </Col>
-              <Col md={6}>
+              <Col md={6} xs={6}>
                 <Button
                   className={
-                    "w-100 rounded-pill border-3 border-info text-dark fw-bold zoom "
+                    "w-100 rounded-pill border-3 border-info text-dark fw-bold zoom px-1 px-sm-auto"
                   }
                   outline
                   color="info"
@@ -106,10 +106,10 @@ const LoginModal = () => {
         <ModalBody>
           <ButtonGroup className="w-100 border-top pt-3">
             <Row className="w-100 mx-auto">
-              <Col md={6}>
+              <Col md={6}  xs={6}>
                 <Button
                   className={
-                    "w-100 rounded-pill  border-3 border-info text-light fw-bold zoom active "
+                    "w-100 rounded-pill  border-3 border-info text-light fw-bold zoom active  px-1 px-sm-auto"
                   }
                   outline
                   color="info"
@@ -118,10 +118,10 @@ const LoginModal = () => {
                   User
                 </Button>
               </Col>
-              <Col md={6}>
+              <Col md={6} xs={6}>
                 <Button
                   className={
-                    "w-100 rounded-pill border-3 border-info text-dark fw-bold zoom"
+                    "w-100 rounded-pill border-3 border-info text-dark fw-bold zoom px-1 px-sm-auto"
                   }
                   outline
                   color="info"

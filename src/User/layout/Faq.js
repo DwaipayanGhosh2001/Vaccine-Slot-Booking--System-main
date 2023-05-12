@@ -19,7 +19,7 @@ const Faqsection = ({question, answer, count}) => {
     };
   return (
 
-        <Card className=" py-0 shadow p-3 my-4 bg-body rounded w-50 mx-auto">
+        <Card className=" py-0 shadow p-3 my-4 bg-body rounded w-50 mx-auto faq">
                  <CardBody className="pb-0">
                    <p onClick={handleToggle}>{`Q${count}: ${question}`}
                      <span className="float-end">
