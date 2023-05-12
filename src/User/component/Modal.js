@@ -166,21 +166,21 @@ const AppointmentModal = () => {
             <ModalHeader className="mx-auto border-0  pb-0 " toggle={toggle}>
               <h3 className="text-color"> Vaccine Booking Status</h3>
             </ModalHeader>
-            <ModalBody className="border-top">
+            <ModalBody className="border-top ">
               {bookdetails.length === 0 ? (
                 <div>
                   <h6 className="fw-bold fs-5 ms-4"> No Vaccine Slot Is Booked.</h6>
                 </div>
               ) : (
                 <>
-                  <Table>
+                  <Table className="table">
                     <thead>
                       <tr className="text-center">
                         <th>Sl.No</th>
                         <th>Vaccine Center</th>
                         <th>Vaccine</th>
-                        <th>Type</th>
-                        <th>Booking Date</th>
+                        <th className="d-none d-md-block">Type</th>
+                        <th className="d-none d-md-block">Booking Date</th>
                         <th>Approved Date</th>
                         <th>Status</th>
                       </tr>
@@ -191,8 +191,8 @@ const AppointmentModal = () => {
                           <th scope="row">{index + 1}</th>
                           <td>{item.centre_name}</td>
                           <td>{item.vaccine}</td>
-                          <td>{item.paid ? "Paid" : "Free"}</td>
-                          <td>{item.booking_date.substring(0,10)}</td>
+                          <td className="d-none d-md-block">{item.paid ? "Paid" : "Free"}</td>
+                          <td className="d-none d-md-block">{item.booking_date.substring(0,10)}</td>
                           <td>
                             {item.allotted_date === null
                               ? "-"
