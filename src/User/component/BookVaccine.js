@@ -32,7 +32,7 @@ bookvaccine(vaccine, paid, centerid, uid)
         <Label className="mt-3">Select Vaacine</Label>
         <Input type="select" name="Vaccine" innerRef={vacRef}>
           {available.map((item, index) => (
-            <option key={index}>{item.name}-{item.paid === true ? "Paid" : "Free"} </option>
+            <option key={index}>{item.name} </option>
           ))}
         </Input>
         <div className="d-flex justify-content-center mt-4 mb-2">
