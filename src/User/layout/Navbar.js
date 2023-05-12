@@ -52,9 +52,9 @@ function Navvbar() {
             />
             <span className="fst-italic text-white ms-1">VacBook</span>
           </NavbarBrand>
-          <Collapse isOpen={isOpen} navbar>
+          <Collapse isOpen={isOpen} navbar className="w-50">
             <Nav className="mx-auto" navbar>
-              <NavItem>
+              <NavItem onClick={toggle}>
                 <NavLink
                   className="text-white px-md-4 px-1 zoom"
                   tag={Link}
@@ -62,8 +62,8 @@ function Navvbar() {
                 >
                   Home{" "}
                 </NavLink>
-              </NavItem>
-              <NavItem>
+              </NavItem >
+              <NavItem onClick={toggle}>
                 <NavLink
                   className="text-white px-md-4 px-1 zoom"
                   tag={Link}
@@ -71,8 +71,8 @@ function Navvbar() {
                 >
                   About{" "}
                 </NavLink>
-              </NavItem>
-              <NavItem>
+              </NavItem >
+              <NavItem onClick={toggle}>
                 <NavLink
                   className="text-white px-md-4  px-1 zoom "
                   tag={Link}
@@ -81,7 +81,7 @@ function Navvbar() {
                   Book A Slot
                 </NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={toggle}>
                 <NavLink>
                   <AppointmentModal />
                 </NavLink>
@@ -94,13 +94,13 @@ function Navvbar() {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT5PtA1LuQjHI8UsKeOhvZyhgzq8kVcqs7vw&usqp=CAU"
               className="rounded-circle  logo"
               style={{
-                height: 40,
-                width: 40,
+                height: 20,
+                width: 20,
               }}
             />
-            <span className="fst-italic text-white ms-1">VacBook</span>
+            <span className="fst-italic text-white ms-1" style={{fontSize: "15px"}}>VacBook</span>
           </NavbarBrand>
-          <div className="d-flex ms-auto">
+          <div className="d-flex ms-md-auto">
             {user ? (
               <UncontrolledDropdown className="me-5">
                 <DropdownToggle nav>

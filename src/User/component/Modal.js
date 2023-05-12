@@ -26,7 +26,7 @@ const RegsiterModal = () => {
       <Button
         color="light"
         outline
-        className="me-md-4 "
+        className="me-md-4 modalbtn"
         style={{ border: "none" }}
         onClick={toggle}
       >
@@ -90,7 +90,7 @@ const LoginModal = () => {
       <Button
         color="light"
         outline
-        className="me-md-4 "
+        className="me-md-4 modalbtn"
         style={{ border: "none" }}
         onClick={toggle}
       >
