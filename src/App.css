@@ -298,3 +298,15 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+
   
 /* Icons CSS */
 
+.dev-profile-pic {
+  filter: grayscale(100%);
+  border: 2px solid #334155;
+  padding: 4px;
+}
+
+.dev-profile-pic:hover {
+  filter: grayscale(0);
+  filter: none;
+  border: 2px solid #0ea5e9;
+  -webkit-transition: all .8s ease-in-out;
+}

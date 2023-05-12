@@ -40,7 +40,7 @@ export default function AddStock({ open, setOpen }) {
           <DialogContentText id="alert-add-new-vaccine">
             only add new type of vaccines here, If vaccine count is 0 then update it.
           </DialogContentText>
-          {Error && <Alert severity='warning' style={{margin: '.5rem'}}>{errMsg}</Alert>}
+          {Error && <Alert severity='success' style={{margin: '.5rem'}}>{errMsg}</Alert>}
           <form onSubmit={handleSubmit} style={{ marginTop: '1rem' }}>
             <div style={{ display: 'flex', gap: '.5rem', marginBottom: '1rem' }}>
               <TextField inputRef={vNameRef} required label='Vaccine name' variant='outlined' type='text' color='success' />
