@@ -22,8 +22,10 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.2",
+    "react-tsparticles": "^2.9.3",
     "reactstrap": "^9.1.9",
     "swiper": "^9.2.4",
+    "tsparticles": "^2.9.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

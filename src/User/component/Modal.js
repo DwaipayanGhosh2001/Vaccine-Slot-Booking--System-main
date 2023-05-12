@@ -26,7 +26,7 @@ const RegsiterModal = () => {
       <Button
         color="light"
         outline
-        className="me-4 "
+        className="me-md-4 "
         style={{ border: "none" }}
         onClick={toggle}
       >

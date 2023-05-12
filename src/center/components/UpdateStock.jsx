@@ -66,7 +66,7 @@ export default function UpdateStock({ open, setOpen }) {
       <Dialog open={open} TransitionComponent={Transition} keepMounted onClose={handleClose} aria-describedby="alert-dialog-slide-description" >
         <DialogTitle>{"Add vaccine stocks"}</DialogTitle>
         <DialogContent>
-          {Error && <Alert severity='warning' style={{margin: '.5rem'}}>{errMsg}</Alert>}
+          {Error && <Alert severity='success' style={{margin: '.5rem'}}>{errMsg}</Alert>}
           <DialogContentText>{`Note: Currently you are going to add new stock of a vaccine type, Updated stock will be new stock + current stock, If you want to reduce stock use negative value.`}</DialogContentText>
           <form onSubmit={handelSubmit} style={{margin: '1rem'}}>
             <div style={{ margin: '.75rem 0', display: 'flex', width: '100%' }}>
