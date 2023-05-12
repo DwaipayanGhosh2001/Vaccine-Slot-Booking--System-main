@@ -7,7 +7,7 @@ const Bookslot = () => {
   const [active, setActive] = useState(1);
   const toggle = (id) => setActive(id);
   return (
-    <div style={{backgroundColor:"#F5F5F5"}}>
+    <div style={{backgroundColor:"#F5F5F5", minHeight: "100vh"}}>
        <Container fluid className=" pb-2 bg-slot ">
       <h1 className="text-center text-color pt-5 animate__animated 	animate__bounce animate__slow	3s "
 

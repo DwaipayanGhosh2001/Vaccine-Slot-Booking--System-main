@@ -7,7 +7,7 @@ import about from "../Img/about.jpg"
 const About = () => {
   const {click} = useUserAuth();
   return (
-    <div className="bg-about" style={{backgroundImage: `url(${about})`}}>
+    <div className="bg-about" style={{backgroundImage: `url(${about})`, minHeight: "100vh"}}>
       <div className="ms-md-auto w-50 text-dark about faq mx-auto mx-md-0">
         <h1
           className=" pt-3 fw-bold  w-75 ms-md-auto fst-italic mx-auto mx-md-0"
