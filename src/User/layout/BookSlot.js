@@ -21,7 +21,7 @@ const Bookslot = () => {
       <div className="text-center mx-auto w-100 mt-4 ">
         <h3 className="text-color ">Seacrh By: </h3>
         <Button
-          className={ `border-0 fs-4 text-secondary zoom mx-5 mt-2 pt-0 ${active === 1 ? `activeText text-uppercase` : ''}`}
+          className={ `border-0 fs-4 text-secondary zoom mx-sm-5 mt-2 pt-0 ${active === 1 ? `activeText text-uppercase` : ''}`}
           outline
           style={{ backgroundColor: (hover = "transparent") }}
           onClick={() => toggle(1)}
@@ -29,7 +29,7 @@ const Bookslot = () => {
           District
         </Button>
         <Button
-          className={ `border-0 fs-4 text-secondary zoom mx-5 mt-2 pt-0 ${active === 1 ? `` : 'activeText text-uppercase'}`}
+          className={ `border-0 fs-4 text-secondary zoom mx-sm-5 mt-2 pt-0 ${active === 1 ? `` : 'activeText text-uppercase'}`}
           outline
           style={{ backgroundColor: (hover = "transparent") }}
           onClick={() => toggle(2)}

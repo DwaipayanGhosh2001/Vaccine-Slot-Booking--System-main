@@ -5,8 +5,8 @@ const Cardelement = ({ details }) => {
   return (
     <>
     <div className="d-flex justify-content-center mt-3">
-      <p className="px-5 py-1 text-white text-uppercase rounded bg-paid mb-0 mx-5">Paid</p>
-      <p className="px-5 py-1 text-dark text-uppercase rounded bg-free mb-0 mx-5">Free</p>
+      <p className="px-sm-5 px-3 py-1 text-white text-uppercase rounded bg-paid mb-0 mx-5 ">Paid</p>
+      <p className="px-sm-5 px-3 py-1 text-dark text-uppercase rounded bg-free mb-0 mx-5 ">Free</p>
       </div>
       <Container className="m-5 w-100 mx-auto">
         <ListGroup>
@@ -51,8 +51,8 @@ const Cardelement = ({ details }) => {
                         {item.centre_name}
                       </p>
                       <p className="mb-0 ms-1">{item.address}</p>
-                      <div>
-                        <div className="d-flex flex-wrap w-75 faq ">
+                      <div className="w-75 faq">
+                        <div className=" d-flex flex-wrap ">
                           {item.vaccines.map((vaccine, index) => (
                             <div key={index}>
                               {vaccine.stock > 0 && (
@@ -63,7 +63,7 @@ const Cardelement = ({ details }) => {
                                     </p>
                                   ) : (
                                     <>
-                                      <p className="text-dark mt-2 mx-2 mb-0 text-capitalize text-center bg-free px-3 rounded">
+                                      <p className="text-dark mt-2 mx-2 mb-0 text-capitalize text-cesrc/User/component/Cardelement.jsnter bg-free px-3 rounded">
                                       {`${vaccine.name} (${vaccine.stock})`}
                                       </p>
                                     </>

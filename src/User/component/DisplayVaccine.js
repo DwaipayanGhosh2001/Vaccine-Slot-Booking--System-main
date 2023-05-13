@@ -5,6 +5,7 @@ import Cardelement from "./Cardelement";
 
 const DistrictVaccine = ({ district }) => {
   const [vacDetails, setVacDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
   // calling the axios inside the useEfect with the dependency of district. This will be called only when the district changes from default.
   useEffect(() => {
     const fetchVaccineDetails = () => {
@@ -15,6 +16,7 @@ const DistrictVaccine = ({ district }) => {
           const { data } = res;
           console.log(data);
           setVacDetails(data);
+          setLoading(false)
         })
         .catch((error) => {
           console.log(error);
@@ -26,6 +28,16 @@ const DistrictVaccine = ({ district }) => {
       fetchVaccineDetails();
     }
   }, [district]);
+
+  if (district !== "Select District" && loading) {
+    return (
+      <div className="d-flex justify-content-center text-info">
+  <div clasName="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>
+    )
+  }
 
   return (
     <div>
@@ -48,6 +60,7 @@ const DistrictVaccine = ({ district }) => {
 
 const PinVaccine = ({ pincode }) => {
     const [vacpinDetails, setVacpinDetails] = useState([]);
+    const [loading, setLoading] = useState(true);
     // calling the axios inside the useEfect with the dependency of district. This will be called only when the district changes from default.
     useEffect(() => {
       const fetchVaccineDetails = () => {
@@ -57,6 +70,7 @@ const PinVaccine = ({ pincode }) => {
           .then((res) => {
             const { data } = res;
             setVacpinDetails(data);
+            setLoading(false);
           })
           .catch((error) => {
             console.log(error);
@@ -68,6 +82,16 @@ const PinVaccine = ({ pincode }) => {
         fetchVaccineDetails();
       }
     }, [pincode]);
+
+    if (pincode != "" && loading) {
+      return (
+        <div className="d-flex justify-content-center text-info">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>
+      )
+    }
     return (
       <div>
         {pincode !== "" && (

@@ -34,6 +34,7 @@ export function UserContextProvider({ children }) {
   //   localStorage.setItem("user", JSON.stringify(user));
   // }, [user]);
 
+  // Local Storage implementation 
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
@@ -72,7 +73,6 @@ export function UserContextProvider({ children }) {
           uid: data.id,
           appointdetails: data.appointments,
         });
-
         navigate("/");
         toast("Login done", { type: "success" });
       })
@@ -110,13 +110,13 @@ export function UserContextProvider({ children }) {
           address: data.address,
           uid: data.id,
         });
-
         navigate("/");
         toast("sign up done", { type: "success" });
       })
       .catch((error) => {
         console.log(error);
         toast(error.response.data.error, { type: "error" });
+        
       });
   }
 
@@ -161,6 +161,6 @@ export function UserContextProvider({ children }) {
         console.log(error)
       })
   }
-  const value = { userlogin, register, logout, user, setUser, change, bookvaccine, showvaccine, bookdetails };
+  const value = { userlogin, register, logout, user, setUser, change, bookvaccine, showvaccine, bookdetails, setBookDetails  };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

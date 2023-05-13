@@ -10,6 +10,8 @@ import {
   Col,
   ButtonGroup,
   Table,
+  ModalFooter,
+  Input,
 } from "reactstrap";
 import UserRegister from "./UserRegister";
 import Userlogin from "./UserLogin";
@@ -80,7 +82,7 @@ const RegsiterModal = () => {
 };
 
 const LoginModal = () => {
-  const {click} = useUserAuth();
+  const { click } = useUserAuth();
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -106,7 +108,7 @@ const LoginModal = () => {
         <ModalBody>
           <ButtonGroup className="w-100 border-top pt-3">
             <Row className="w-100 mx-auto">
-              <Col md={6}  xs={6}>
+              <Col md={6} xs={6}>
                 <Button
                   className={
                     "w-100 rounded-pill  border-3 border-info text-light fw-bold zoom active  px-1 px-sm-auto"
@@ -144,17 +146,39 @@ const LoginModal = () => {
 };
 
 const AppointmentModal = () => {
-  const { user, showvaccine, bookdetails } = useUserAuth();
+  const { user, showvaccine, bookdetails, setBookDetails } = useUserAuth();
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [checkbox, setCheckbox] = useState(false);
+  const [cancel, setCancel] = useState([]);
 
   const toggle = () => setModal(!modal);
- 
+
   const handleopen = () => {
     toggle();
     const uid = user.uid;
     showvaccine(uid);
-    console.log(bookdetails)
-  }
+  };
+  const discard = (id) => {
+    const find = cancel.find((item) => item === id);
+    if (find !== id) {
+      setCancel([...cancel, id]);
+    } else {
+      const filter = cancel.filter((item) => item !== id);
+      setCancel(filter);
+    }
+  };
+
+  const remove = () => {
+    const elements = bookdetails.filter(
+      (item, index) => !cancel.includes(index)
+    );
+    setBookDetails(elements);
+    setCancel([]);
+    setCheckbox(false);
+  };
+
+  // console.log(bookdetails)
   return (
     <div>
       {user ? (
@@ -163,53 +187,74 @@ const AppointmentModal = () => {
             Appointment
           </p>
           <Modal isOpen={modal} centered size="xl">
-            <ModalHeader className="mx-auto border-0  pb-0 " toggle={toggle}>
+            <ModalHeader
+              className="mx-auto border-0 pb-0"
+              toggle={() => {
+                toggle();
+                setCheckbox(false);
+                setCancel([]);
+              }}
+            >
               <h3 className="text-color"> Vaccine Booking Status</h3>
             </ModalHeader>
-            <ModalBody className="border-top ">
+
+            <ModalBody className="border-top">
               {bookdetails.length === 0 ? (
                 <div>
-                  <h6 className="fw-bold fs-5 ms-4"> No Vaccine Slot Is Booked.</h6>
+                  <h6 className="fw-bold fs-5 ms-4">
+                    {" "}
+                    No Vaccine Slot Is Booked.
+                  </h6>
                 </div>
               ) : (
                 <>
                   <Table className="table">
                     <thead>
                       <tr className="text-center">
+                        {checkbox && <th>Select</th>}
                         <th>Sl.No</th>
                         <th>Vaccine Center</th>
                         <th>Vaccine</th>
                         <th className="d-none d-md-block">Type</th>
                         <th>Booking Date</th>
                         <th>Approved Date</th>
-                         {/* <th className="d-none d-md-block" >Status</th>  */}
                       </tr>
                     </thead>
                     <tbody className="text-center">
                       {bookdetails.map((item, index) => (
                         <tr key={index}>
-                          <th scope="row">{index + 1}</th>
+                          {checkbox && (
+                            <Input
+                              type="checkbox"
+                              onChange={() => discard(index)}
+                            />
+                          )}
+                          <th scope="row"> {index + 1}</th>
                           <td>{item.centre_name}</td>
                           <td>{item.vaccine}</td>
-                          <td className="d-none d-md-block">{item.paid ? "Paid" : "Free"}</td>
-                          <td >{item.booking_date.substring(0,10)}</td>
-                          <td 
-                          className={ `fw-bold ${item.approved === null
-                            ? "text-uppercase text-secondary"
-                            : item.approved === true
-                            ? `text-success`
-                            : `text-danger text-uppercase`}`
-                            
-                          }
+                          <td className="d-none d-md-block">
+                            {item.paid ? "Paid" : "Free"}
+                          </td>
+                          {item && (
+                            <td>{item.booking_date.substring(0, 10)}</td>
+                          )}
+
+                          <td
+                            className={`fw-bold ${
+                              item.approved === null
+                                ? "text-uppercase text-secondary"
+                                : item.approved === true
+                                ? `text-success`
+                                : `text-danger text-uppercase`
+                            }`}
                           >
-                            
                             {item.approved === null
                               ? "Pending"
                               : item.approved === true
                               ? item.allotted_date
                               : "Denied"}
                           </td>
-                           {/* <td className="d-none d-md-block">
+                          {/* <td className="d-none d-md-block">
                             <Button
                               className=" text-white rounded px-2 py=1 me-3 "
                               color={
@@ -231,10 +276,35 @@ const AppointmentModal = () => {
                       ))}
                     </tbody>
                   </Table>
-                  <p className="text-danger mb-0">* Please reach the vaccine center on the Approved Date for your scheduled vaccination.</p>
+                  <p className="text-danger mb-0">
+                    * Please reach the vaccine center on the Approved Date for
+                    your scheduled vaccination.
+                  </p>
                 </>
               )}
             </ModalBody>
+            {bookdetails.length !== 0 && 
+            (
+<ModalFooter className="border-0 pt-0">
+              {cancel.length !== 0 && (
+                <Button className="" color="danger" onClick={remove}>
+                  Confirm
+                </Button>
+              )}
+
+              <Button
+                className="float-end rounded"
+                outline
+                color="danger"
+                disabled={cancel.length !== 0}
+                onClick={() => setCheckbox(!checkbox)}
+              >
+                Cancel Booking
+              </Button>
+            </ModalFooter>
+            )
+            }
+            
           </Modal>
         </>
       ) : (

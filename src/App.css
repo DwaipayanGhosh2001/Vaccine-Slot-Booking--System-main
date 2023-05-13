@@ -310,7 +310,9 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9) !important; /* 
 .modalbtn{
   font-size: 15px;
 }
-
+th{
+  padding: 0 !important;
+}
 }
   
 /* Icons CSS */

@@ -15,12 +15,12 @@ const Searchdistrict = () => {
   useEffect(() => {
     // Get the districts for the selected state
     const selectedState = states.find((item) => item.state === state);
-       if (selectedState) {
+    if (selectedState) {
       // Set the first district as the default value
       setDistrict(selectedState.districts[0]);
     }
   }, [state]);
-  
+
   return (
     <Container fluid>
       <div>
@@ -50,7 +50,11 @@ const Searchdistrict = () => {
                   placeholder="Enter state"
                   className="rounded-pill "
                   value={state}
-                  onChange={(e) => user? setState(e.target.value) : toast("Please Log-In first", { type: "error" }) }
+                  onChange={(e) =>
+                    user
+                      ? setState(e.target.value)
+                      : toast("Please Log-In first", { type: "error" })
+                  }
                 >
                   {states.map((item, index) => (
                     <option key={index}>{item.state}</option>
@@ -103,8 +107,8 @@ const Searchpin = () => {
   };
 
   return (
-    <Container fluid >
-       <div>
+    <Container fluid>
+      <div>
         {pin.pincode === "" && (
           <p
             className="d-flex justify-content-center fst-italic my-4"
@@ -125,8 +129,14 @@ const Searchpin = () => {
           onChange={handleInput}
         />
       </Form>
-      {pin.pincode > 99999 && pin.pincode < 1000000 && (
+      {pin.pincode > 99999 && pin.pincode < 1000000 ? (
         <PinVaccine pincode={pin.pincode} />
+      ) : (
+        <>
+          { pin.pincode > 1000000 && (
+            <h3 className="text-center text-danger">Invalid Input</h3>
+          )}
+        </>
       )}
     </Container>
   );

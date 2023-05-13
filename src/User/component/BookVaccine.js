@@ -1,14 +1,19 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { Button, Container, Form, Input, Label } from "reactstrap";
 import { useUserAuth } from "../context/Context";
 
 const BookVaccine = ({ details }) => {
   const { user, bookvaccine } = useUserAuth();
+  const [check, setCheck] = useState(false);
+
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
 const vacRef= useRef();
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
 e.preventDefault();
 const centerid= details._id;
 const uid = user.uid;
@@ -16,9 +21,11 @@ const vaccine= vacRef.current.value;
 const find = details.vaccines.filter((item) => item.name === vaccine)
 const paid = find[0].paid;
 bookvaccine(vaccine, paid, centerid, uid)
+await delay(4000);
+setCheck(!check);
 }
   const available = details.vaccines.filter((item) => item.stock > 0);
-  console.log(available)
+
  
   return (
     <Container className="border-top ">
@@ -42,8 +49,14 @@ bookvaccine(vaccine, paid, centerid, uid)
             color="success"
             outline
             style={{ backgroundColor: (hover = "transparent") }}
+            onClick={() => setCheck(!check)}
           >
-            Book
+           {check  ? (
+                  <div className="spinner-border spinner-border-sm" role="status">
+                  </div>
+                ) : (
+                  `Book Slot`
+                )}
           </Button>
         </div>
       </Form>

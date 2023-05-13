@@ -5,6 +5,11 @@ import { Label, Input, Form, Button, Card, CardBody } from "reactstrap";
 import { hover } from "@testing-library/user-event/dist/hover";
 const UserRegister = () => {
   const { register } = useUserAuth();
+  const [check, setCheck] = useState(false);
+
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
 const nameRef= useRef(null);
 const emailRef= useRef(null);
@@ -12,7 +17,7 @@ const phoneRef= useRef(null);
 const addressRef= useRef(null);
 const passRef= useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const name= nameRef.current.value;
     const email= emailRef.current.value;
@@ -23,6 +28,8 @@ const passRef= useRef(null);
       return alert("Form not complete");
     }
     register(name, email, phone, address, password);
+    await delay(4000);
+    setCheck(!check);
   };
   return (
     <div>
@@ -73,8 +80,15 @@ const passRef= useRef(null);
                 outline
                 color="success"
                 style={{ backgroundColor: (hover = "transparent") }}
+                onClick={() => setCheck(!check)}
               >
-                Submit
+                {check ? (
+                  <div className="spinner-border spinner-border-sm" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                ) : (
+                  `Submit`
+                )}
               </Button>
             </div>
           </Form>
